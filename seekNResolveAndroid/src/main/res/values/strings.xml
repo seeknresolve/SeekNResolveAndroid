@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SeekNResolve Android</string>
+    <string name="login">Log in</string>
+    <string name="ServerUrlLabel">Server url:</string>
+    <string name="urlHint">http://</string>
+    <string name="loginHint">login</string>
+    <string name="passwordHint">password</string>
+</resources>
