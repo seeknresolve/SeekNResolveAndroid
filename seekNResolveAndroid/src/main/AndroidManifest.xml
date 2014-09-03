@@ -9,7 +9,7 @@
         android:label="@string/app_name"
         android:theme="@style/Theme.AppCompat" >
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.LogInActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustResize|stateHidden" >
 

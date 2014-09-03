@@ -4,7 +4,7 @@ package org.seeknresolve.android;
 import com.squareup.okhttp.OkHttpClient;
 
 import org.seeknresolve.android.rest.SessionIdInterceptor;
-import org.seeknresolve.android.ui.MainActivity;
+import org.seeknresolve.android.ui.LogInActivity;
 
 import java.net.CookieManager;
 import java.net.CookiePolicy;
@@ -14,11 +14,12 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import retrofit.RestAdapter;
 import retrofit.client.OkClient;
 
 @Module(
         injects = {
-                MainActivity.class,
+                LogInActivity.class,
                 SessionIdInterceptor.class
         }
 )
@@ -44,5 +45,14 @@ public class HttpModule {
     @Named("sessionIdName")
     String provideSessionIdName() {
         return "JSESSIONID";
+    }
+
+    @Provides
+    @Singleton
+    RestAdapter.Builder proviceBuilder(SessionIdInterceptor sessionIdInterceptor, OkClient okClient) {
+        return new RestAdapter.Builder()
+                .setRequestInterceptor(sessionIdInterceptor)
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setClient(okClient);
     }
 }

@@ -36,7 +36,7 @@ import retrofit.RetrofitError;
 import retrofit.client.OkClient;
 import retrofit.client.Response;
 
-public class MainActivity extends Activity {
+public class LogInActivity extends Activity {
 
     @InjectView(R.id.url)
     EditText urlView;
@@ -62,10 +62,13 @@ public class MainActivity extends Activity {
     @Inject @Named("sessionIdName")
     String sessionIdName;
 
+    @Inject
+    RestAdapter.Builder restAdapterBuilder;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         ButterKnife.inject(this);
         ((SeekNResolveAndroid) getApplication()).inject(this);
     }
@@ -82,7 +85,7 @@ public class MainActivity extends Activity {
         isInputFilled();
         String login = loginView.getText().toString();
         String password = passwordView.getText().toString();
-        getMyRestApi().login(login, password, getMyApiIndexCallback());
+        getSeekNResolveApi().login(login, password, getMyApiIndexCallback());
     }
 
     private void clearErrors() {
@@ -105,15 +108,11 @@ public class MainActivity extends Activity {
         return false;
     }
 
-    private SeekNResolve getMyRestApi() {
-        final RestAdapter restAdapter = new RestAdapter.Builder()
+    private SeekNResolve getSeekNResolveApi() {
+        return restAdapterBuilder
                 .setEndpoint(urlView.getText().toString().trim())
-                .setRequestInterceptor(sessionIdInterceptor)
-                .setLogLevel(RestAdapter.LogLevel.FULL)
-                .setClient(okClient)
-                .build();
-
-        return restAdapter.create(SeekNResolve.class);
+                .build()
+                .create(SeekNResolve.class);
     }
 
     private Callback<Response> getMyApiIndexCallback() {
@@ -140,6 +139,3 @@ public class MainActivity extends Activity {
         };
     }
 }
-
-
-
