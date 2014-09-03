@@ -2,6 +2,7 @@ package org.seeknresolve.android.ui;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -73,12 +74,6 @@ public class LogInActivity extends Activity {
         ((SeekNResolveAndroid) getApplication()).inject(this);
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(String name, Context context, AttributeSet attrs) {
-        return super.onCreateView(name, context, attrs);
-    }
-
     @OnClick(R.id.logIn)
     public void logIn() {
         clearErrors();
@@ -124,7 +119,8 @@ public class LogInActivity extends Activity {
                     for (HttpCookie cookie : cookieList) {
                         if (cookie.getName().equals(sessionIdName)) {
                             sessionIdInterceptor.setSessionIdValue(cookie.getValue());
-                            break;
+                            Intent intent = new Intent(getApplicationContext(), ProjectListActivity.class);
+                            startActivity(intent);
                         }
                     }
                 } catch (URISyntaxException e) {

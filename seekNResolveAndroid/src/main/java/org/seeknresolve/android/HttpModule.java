@@ -5,6 +5,7 @@ import com.squareup.okhttp.OkHttpClient;
 
 import org.seeknresolve.android.rest.SessionIdInterceptor;
 import org.seeknresolve.android.ui.LogInActivity;
+import org.seeknresolve.android.ui.ProjectListActivity;
 
 import java.net.CookieManager;
 import java.net.CookiePolicy;
@@ -20,6 +21,7 @@ import retrofit.client.OkClient;
 @Module(
         injects = {
                 LogInActivity.class,
+                ProjectListActivity.class,
                 SessionIdInterceptor.class
         }
 )
