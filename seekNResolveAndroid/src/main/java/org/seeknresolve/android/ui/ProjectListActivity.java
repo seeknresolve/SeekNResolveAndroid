@@ -2,6 +2,7 @@ package org.seeknresolve.android.ui;
 
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -46,6 +47,10 @@ public class ProjectListActivity extends ListActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Project selectedProject = ((ProjectListAdapter) getListView().getAdapter()).getItem(position);
+
+                Intent intent = new Intent(getApplicationContext(), ProjectBugListActivity.class);
+                intent.putExtra(ProjectBugListActivity.PROJECT_ID, selectedProject.getId());
+                startActivity(intent);
                 Toast.makeText(getApplicationContext(), selectedProject.getId().toString(), Toast.LENGTH_SHORT).show();
             }
         });

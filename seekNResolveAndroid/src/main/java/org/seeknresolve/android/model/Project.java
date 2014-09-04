@@ -1,10 +1,13 @@
 package org.seeknresolve.android.model;
 
+import java.util.List;
+
 public class Project {
     Long id;
     String name;
     String tag;
     String description;
+    List<Bug> bugs;
 
     public Long getId() {
         return id;
@@ -36,5 +39,13 @@ public class Project {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Bug> getBugs() {
+        return bugs;
+    }
+
+    public void setBugs(List<Bug> bugs) {
+        this.bugs = bugs;
     }
 }

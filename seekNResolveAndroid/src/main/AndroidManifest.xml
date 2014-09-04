@@ -30,6 +30,15 @@
                 android:value=".ui.LogInActivity" />
         </activity>
 
+        <activity
+            android:name=".ui.ProjectBugListActivity"
+            android:parentActivityName=".ui.ProjectListActivity">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.ProjectListActivity" />
+        </activity>
+
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 
