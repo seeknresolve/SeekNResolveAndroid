@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import org.seeknresolve.android.SeekNResolveAndroid;
 import org.seeknresolve.android.model.Project;
+import org.seeknresolve.android.model.UserProvider;
 import org.seeknresolve.android.rest.SeekNResolve;
 import org.seeknresolve.android.rest.SnrResponse;
 
@@ -32,6 +33,9 @@ public class ProjectListActivity extends ListActivity {
 
     @Inject
     RestAdapter.Builder restAdapterBuilder;
+
+    @Inject
+    UserProvider loggedUserProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,4 +1,4 @@
-package org.seeknresolve.android;
+package org.seeknresolve.android.module;
 
 
 import com.squareup.okhttp.OkHttpClient;
@@ -23,7 +23,8 @@ import retrofit.client.OkClient;
                 LogInActivity.class,
                 ProjectListActivity.class,
                 SessionIdInterceptor.class
-        }
+        },
+        complete = false
 )
 public class HttpModule {
 
