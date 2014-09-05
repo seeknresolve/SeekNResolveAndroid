@@ -56,4 +56,9 @@ dependencies {
     def daggerVersion = '1.2.+'
     apt "com.squareup.dagger:dagger-compiler:$daggerVersion"
     compile "com.squareup.dagger:dagger:$daggerVersion"
+
+    // OrmLite
+    def ormLiteVersion = '4.48'
+    compile "com.j256.ormlite:ormlite-android:$ormLiteVersion"
+    compile "com.j256.ormlite:ormlite-core:$ormLiteVersion"
 }

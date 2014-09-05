@@ -6,7 +6,8 @@ import dagger.Module;
         includes = {
                 AuthenticationModule.class,
                 HttpModule.class
-        }
+        },
+        complete = false
 )
 public class MainModule {
 }
