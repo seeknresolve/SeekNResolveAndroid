@@ -1,14 +1,63 @@
 buildscript {
     repositories {
-        jcenter()
+        mavenCentral()
+        maven {url 'https://oss.sonatype.org/content/repositories/snapshots/'}
     }
+
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.12.+'
+        classpath 'com.android.tools.build:gradle:0.13.+'
+        classpath "com.neenbedankt.gradle.plugins:android-apt:1.4"
     }
 }
 
-allprojects {
-    repositories {
-        jcenter()
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+
+android {
+    compileSdkVersion 20
+    buildToolsVersion "20.0.0"
+
+    defaultConfig {
+        applicationId "org.seeknresolve.android"
+        minSdkVersion 16
+        targetSdkVersion 20
+        versionCode 1
+        versionName "1.0"
     }
+
+    android {
+        lintOptions {
+            abortOnError false
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven {url 'https://oss.sonatype.org/content/repositories/snapshots/'}
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:20.0.0'
+
+    // Butter Knife
+    compile 'com.jakewharton:butterknife:5.1.2'
+
+    // Retrofit
+    compile 'com.squareup.retrofit:retrofit:1.6.1'
+
+    // OKHttp
+    compile 'com.squareup.okhttp:okhttp-urlconnection:2.0.0'
+    compile 'com.squareup.okhttp:okhttp:2.0.0'
+
+    // Dagger
+    def daggerVersion = '1.2.+'
+    apt "com.squareup.dagger:dagger-compiler:$daggerVersion"
+    compile "com.squareup.dagger:dagger:$daggerVersion"
+
+    // OrmLite
+    def ormLiteVersion = '4.48'
+    compile "com.j256.ormlite:ormlite-android:$ormLiteVersion"
+    compile "com.j256.ormlite:ormlite-core:$ormLiteVersion"
 }
